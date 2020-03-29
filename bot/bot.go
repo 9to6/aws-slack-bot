@@ -5,10 +5,10 @@ import (
 	"log"
 	"os"
 
-	"github.com/nlopes/slack"
-	"github.com/odg0318/aws-slack-bot/config"
-	"github.com/odg0318/aws-slack-bot/context"
-	"github.com/odg0318/aws-slack-bot/util"
+	"github.com/slack-go/slack"
+	"github.com/9to6/aws-slack-bot/config"
+	"github.com/9to6/aws-slack-bot/context"
+	"github.com/9to6/aws-slack-bot/util"
 )
 
 var (
@@ -81,10 +81,8 @@ func (b *Bot) onMessageEvent(ev *slack.MessageEvent) {
 
 func NewBot(cfg *config.Config) *Bot {
 	logger := log.New(os.Stdout, "slack-bot: ", log.Lshortfile|log.LstdFlags)
-	slack.SetLogger(logger)
 
-	client := slack.New(cfg.Slack.Token)
-	client.SetDebug(cfg.Debug)
+	client := slack.New(cfg.Slack.Token, slack.OptionLog(logger), slack.OptionDebug(cfg.Debug))
 
 	logger = log.New(os.Stdout, "aws-bot: ", log.Lshortfile|log.LstdFlags)
 	bot := &Bot{

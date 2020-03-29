@@ -5,10 +5,10 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/nlopes/slack"
-	"github.com/odg0318/aws-slack-bot/aws"
-	"github.com/odg0318/aws-slack-bot/context"
-	"github.com/odg0318/aws-slack-bot/util"
+	"github.com/slack-go/slack"
+	"github.com/9to6/aws-slack-bot/aws"
+	"github.com/9to6/aws-slack-bot/context"
+	"github.com/9to6/aws-slack-bot/util"
 )
 
 var (
@@ -96,7 +96,7 @@ func (c *OpsworksCommand) Run() error {
 		attachments = append(attachments, attachment)
 	}
 
-	util.SendAttatchment(client, c.channel, "", attachments)
+	util.SendAttatchment(client, c.channel, "", attachments...)
 
 	return nil
 }

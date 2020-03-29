@@ -1,10 +1,14 @@
-FROM golang:1.8.3
-WORKDIR /go/src/github.com/odg0318/aws-slack-bot
+FROM golang:1.13.5-alpine as builder
+WORKDIR /aws-slack-bot
 COPY . .
 
-WORKDIR cmd/aws-slack-bot
+WORKDIR /aws-slack-bot
 
-RUN go-wrapper download
-RUN go-wrapper install
+RUN go build -mod=vendor cmd/aws-slack-bot/main.go
 
-CMD ["go-wrapper", "run"]
+FROM alpine:3
+
+COPY --from=builder /aws-slack-bot/main /bin/aws-slack-bot
+
+CMD [""]
+ENTRYPOINT ["/bin/aws-slack-bot"]

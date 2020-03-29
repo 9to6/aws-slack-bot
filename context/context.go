@@ -3,8 +3,8 @@ package context
 import (
 	"errors"
 
-	"github.com/nlopes/slack"
-	"github.com/odg0318/aws-slack-bot/config"
+	"github.com/slack-go/slack"
+	"github.com/9to6/aws-slack-bot/config"
 )
 
 var (

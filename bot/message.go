@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/nlopes/slack"
-	"github.com/odg0318/aws-slack-bot/command"
-	"github.com/odg0318/aws-slack-bot/context"
-	"github.com/odg0318/aws-slack-bot/util"
+	"github.com/slack-go/slack"
+	"github.com/9to6/aws-slack-bot/command"
+	"github.com/9to6/aws-slack-bot/context"
+	"github.com/9to6/aws-slack-bot/util"
 )
 
 type Message struct {

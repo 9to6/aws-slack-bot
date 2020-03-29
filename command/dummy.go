@@ -3,10 +3,10 @@ package command
 import (
 	"strings"
 
-	"github.com/nlopes/slack"
+	"github.com/slack-go/slack"
 
-	"github.com/odg0318/aws-slack-bot/context"
-	"github.com/odg0318/aws-slack-bot/util"
+	"github.com/9to6/aws-slack-bot/context"
+	"github.com/9to6/aws-slack-bot/util"
 )
 
 type DummyCommand struct {
@@ -27,9 +27,8 @@ func (c *DummyCommand) Run() error {
 		Text:  strings.Join(c.cmds, " "),
 		Color: "#ff0000",
 	}
-	attachments := []slack.Attachment{attachment}
 
-	util.SendAttatchment(client, c.channel, "Hi! I'm aws slack bot. There are following commands.", attachments)
+	util.SendAttatchment(client, c.channel, "Hi! I'm aws slack bot. There are following commands.", attachment)
 
 	return nil
 }

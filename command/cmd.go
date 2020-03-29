@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/odg0318/aws-slack-bot/context"
+	"github.com/9to6/aws-slack-bot/context"
 )
 
 var (
